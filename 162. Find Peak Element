@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) 
+    {
+     
+		if(nums.size() == 1) //If only One Element is Present Then It is the Peak Element
+        {
+            return 0; 
+        }
+        int n = nums.size();
+        if(nums[0] > nums[1]) //If first element is greater than other then it is peak element
+        {
+            return 0;
+        }
+        if(nums[n-1] > nums[n-2]) //if last second element is greater than last third then it is the peak element
+        {
+            return n-1;
+        }
+        int start = 1;
+        int end = n-2;
+        
+        //Applyin Binary Searching Algorithm For O(logn) Complexity
+        
+        while(start <= end) {
+            int mid = start + (end - start)/2;
+            if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) 
+            {
+                return mid;
+            }
+            else if(nums[mid] < nums[mid-1]) 
+            {
+                end = mid - 1;
+            }
+            else if(nums[mid] < nums[mid+1])
+            {
+                start = mid + 1;
+            }
+        }
+        return -1;
+    }
+    };
