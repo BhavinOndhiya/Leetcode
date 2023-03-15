@@ -21,6 +21,8 @@ public:
             if(s[i]!=s[j])
             {
                 return checkpalindrome(s,i+1,j) || checkpalindrome(s,i,j-1);
+                //here in checking palindrome if we remove first element and it becomes palindrome or if we remove last element then it becomes palindrome
+                //means if in any condition it becomes plaindrome first case or second it will return true it will return false only when both of them return false.
             }
             else
             {
