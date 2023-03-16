@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int findMinDifference(vector<string>& timePoints) {
+        //first step is to convert whole expression in minutes
+        vector<int> minutes;
+        for(int i=0;i<timePoints.size();i++){
+        string curr = timePoints[i];
+        int hours = stoi(curr.substr(0,2));
+        int min = stoi(curr.substr(3,2));
+        int total = (hours*60)+min;
+        minutes.push_back(total);
+    }
+        //second step is to sort
+        sort(minutes.begin(),minutes.end());
+
+        //third step is to traverse and find min difference
+        int mini = INT_MAX;
+        for(int i=0;i<minutes.size()-1;i++)
+        {
+            int diff = minutes[i+1]-minutes[i];
+            mini = min(mini,diff);
+        }
+        //special case when the time is 11:59 means it is 1439 minutes - 0 is 1439 so this way neglecting that case
+        int special = (minutes[0]+1440)-minutes[minutes.size()-1];
+        mini = min(mini,special);
+        return mini;
+    }
+};
