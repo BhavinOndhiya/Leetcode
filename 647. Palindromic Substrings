@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int check(string s,int i,int j)
+    {
+        int cnt=0;
+        while(i>=0 && j<s.length() && s[i]==s[j])
+        {
+            cnt++;
+            j++;
+            i--;
+        }
+        return cnt;
+    }
+    int countSubstrings(string s) {
+        int cnt = 0;
+        int n = s.length();
+        for(int i=0;i<n;i++)
+        {
+            //Case-1 : ODD
+            int odd = check(s,i,i);
+            cnt+=odd;
+            //Case-2 : EVEN
+            int even = check(s,i,i+1);
+            cnt+=even;
+        }
+        return cnt;
+    }
+};
