@@ -1,0 +1,42 @@
+//Approach One Using Simple sort Function
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+       sort(s.begin(),s.end());
+       sort(t.begin(),t.end());
+       for(int i=0;i<s.length();i++)
+       {
+           if(s[i]!=t[i])
+                return false;
+            if(s.length()<t.length())
+                return false;
+       }
+       return true;
+    }
+};
+
+//Approach 2 Using FrequencyTable and checking each element
+//first count all element from first string and then decrement each element which is equal in both string 
+//if the value of frequency table at last does not become 0 then return false and if it becomes zero then return true.
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+       int freqTable[256]={0};
+       for(int i=0;i<s.size();i++)
+       {
+           freqTable[s[i]]++;
+       }
+       for(int i=0;i<t.size();i++)
+       {
+           freqTable[t[i]]--;
+       }
+       for(int i=0;i<256;i++)
+       {
+           if(freqTable[i]!=0)
+                return false;
+            if(s.length()<t.length())
+                return false;
+       }
+       return true;
+    }
+};
