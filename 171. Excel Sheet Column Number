@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+        int ans = 0;
+        for(auto col: columnTitle) {
+            int len = col - 'A' + 1;
+            ans = ans * 26 + len;
+        }
+        return ans;
+    }
+};
