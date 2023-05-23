@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool isPowerOfThree(int n) {
+        //base case condition
+        if(n==0){
+            return false;
+        }
+        else if(n==1){
+            return true;
+        }
+        //baki recurssion sambhal lega
+        return n%3==0 && isPowerOfThree(n/3);  
+    }
+};
