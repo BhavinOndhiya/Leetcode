@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        if (n <= 0) {
+            return false; // Negative numbers and zero are not powers of four
+        }
+        while (n > 1) {
+            if (n % 4 != 0) {
+                return false; // If the remainder is not zero, it is not a power of four
+            }
+            n =n/4;
+        }
+        return true;
+    }
+};
