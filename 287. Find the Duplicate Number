@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        unordered_map<int,int>mp;//used unodered map so it uses only O(1) time complexity
+        int s = nums.size();
+        int ans ;
+        for(int i=0;i<nums.size();i++){
+            mp[nums[i]]++;//for frequency
+        }
+        for(const auto& pair : mp){
+            if(pair.second>1)
+                return pair.first;
+        }
+    return -1;
+    }
+};
