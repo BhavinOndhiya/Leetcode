@@ -2,7 +2,7 @@ class Solution {
 public:
     string removeOccurrences(string s, string part) {
             int position = s.find(part);
-            while(position != string::npos)
+            while(position != string::npos)//npos means checking if it is thier then it would give part else no position
             {
                 s.erase(position,part.length());
                 position = s.find(part);
