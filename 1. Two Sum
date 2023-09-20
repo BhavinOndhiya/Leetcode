@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        unordered_map<int,int> m;
+        for(int i=0;i<nums.size();i++){
+            if(m.find(target-nums[i]) != m.end()){
+                ans.push_back(m[target - nums[i]]);
+                ans.push_back(i);
+                return ans;//if it goes inside if then only one solution is thier
+            }
+            m[nums[i]]=i;//but if it does not go inside if then return empty map
+        }
+        return ans;
+    }
+};
