@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<int> st;
+        for(auto temp : s){
+            if(!st.empty() && st.top()==temp){
+                //first pair is temp which is not yet pushed and when this also becomes equal it is remove so adjacent duplicate is removed
+                st.pop();
+            }
+            else {
+                st.push(temp);
+            }
+        }
+        string ans;
+        while(!st.empty()){
+            ans+=st.top();//here we add all elements which comes out throguh condition
+            st.pop();//then remove from stack to amke it empty at a point
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+    
+};
