@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minPairSum(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int s=0;
+        int e=nums.size()-1;
+        int result=0;
+        while(s<e){
+            int temp = nums[s]+nums[e];
+            result = max(temp,result);
+            s++;
+            e--;
+        }
+        return result;
+    }
+};
