@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        sort(piles.begin(),piles.end());
+        int s = 0;
+        int e = piles.size()-1;
+        int sum = 0;
+        while(s<=e){
+            sum = sum+piles[e-1];
+            e=e-2;
+            s++;
+        }
+        return sum;
+    }
+};
