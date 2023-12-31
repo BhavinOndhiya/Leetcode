@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxLengthBetweenEqualCharacters(string s) {
+        map<char, int> firstOccurrence;
+        int maxLength = -1;
+
+        for (int i = 0; i < s.size(); ++i) {
+            char currentChar = s[i];
+
+            if (firstOccurrence.find(currentChar) == firstOccurrence.end()) {
+                // First occurrence of the character
+                firstOccurrence[currentChar] = i;
+            } else {
+                // Calculate the length of the substring between first and last occurrences
+                int currentLength = i - firstOccurrence[currentChar] - 1;
+                maxLength = max(maxLength, currentLength);
+            }
+        }
+
+        return maxLength;
+    }
+};
