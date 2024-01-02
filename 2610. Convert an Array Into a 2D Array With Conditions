@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) {
+        vector<vector<int>>ans; //defining 2d vector
+        unordered_map<int,int>map;
+        int maxi=0;
+        for(auto i:nums){
+            map[i]++;//finding frequency of elements
+        }
+        for(auto i:map){
+            maxi = max(maxi,i.second);//finding size of 2d array from maximum frequency 
+        }
+        for(int j=0;j<maxi;j++){
+            vector<int>temp;
+
+            for(auto& i:map){
+                if(i.second>0){//checking if freq>0 then insert and --
+                    temp.push_back(i.first);
+                    i.second--;
+                }
+            }
+            ans.push_back(temp);
+        }
+        return ans;
+    }
+};
