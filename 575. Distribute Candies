@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        unordered_map<int,int>map;
+        int n = candyType.size();
+        for(int i=0;i<n;i++){
+            map[candyType[i]]++;
+        }
+         for (auto i = map.begin(); i != map.end(); ++i){
+             if(map.find(i->first)!=map.end()){
+                 map[i->first]--;
+             }
+         }
+         int s = map.size();
+         int ans = n/2;
+         if(ans>s){
+             return s;
+         }
+         return ans;
+    }
+};
